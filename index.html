@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navidadgame</title>
+    <style>
+         :root {
+            --dark-brown: #009929;
+            --light-brown: #9c0720;
+            --dark-green: #9c0720;
+            --light-green: #5ccb5f;
+            --shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+
+        body {
+            margin: 0;
+            counter-reset: score;
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+        }
+        .phone {
+            overflow: hidden;
+            position: relative;
+            border: 8px solid black;
+            border-radius: 40px;
+            height: 600px;
+            width: 300px;
+            background-image: url("navidadback2.jpg");
+            background-size: cover;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 
+                        0 15px 12px rgba(0, 0, 0, 0.22);
+        }
+
+        input[type=checkbox] {
+          background-image: url("papanoel.png");
+          background-size: cover;
+          background-position: center;
+          appearance: none;
+          cursor: pointer;
+          height: 100px;
+          margin: 0;
+          position: relative;
+          top: 0;
+          width: 100px;
+          z-index: 2;
+        }
+
+        input [type=checkbox]:focus {
+          appearance: none;
+          outline: none;
+        }
+
+        input:checked {
+          counter-increment: score;
+        }
+
+        .score::after {
+          content: counter(score);
+        }
+
+        @keyframes cheesa {
+          0% {
+            top: 0;
+          }
+          25% {
+            top: 80px;
+          }
+          100% {
+            top: 0;
+          }
+        }
+
+        @keyframes layer {
+          0% {
+            bottom: 0;
+          }
+          25% {
+            bottom: -80px;
+          }
+          100% {
+            bottom: 0;
+          }
+        }
+
+        .layer-1 {
+          position: absolute;
+          z-index: 1; 
+          height: 480px;
+          width: 80px;
+          bottom: 0;
+          right: 85px;
+
+          animation-name: layer;
+          animation-duration: 1s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+
+        .layer-1 input[type=checkbox] {
+          animation-name: cheesa;
+          animation-duration: 1s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+
+        .layer-2 {
+          position: absolute;
+          z-index: 2;  
+          height: 480px;
+          width: 80px;
+          bottom: 0;
+          left: 50px;
+
+          animation-name: layer;
+          animation-duration: 1.5s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+        .layer-3 {
+          position: absolute;
+          z-index: 3;  
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: 220px;
+          height: 400px;
+          overflow: hidden;
+          background: var(--light-brown);
+          box-shadow: var(--shadow);
+          bottom: 0;
+          border-radius: 20px;
+        }
+        .lawn {
+          background: var(--dark-green);
+          height: 20px;
+          width: 100%;
+        }
+        .land {
+          background: linear-gradient(135deg, var(--dark-green) 25%, transparent 25%) -50px 0, linear-gradient(-135deg, var(--dark-green) 25%, transparent 25%) -50px 0, linear-gradient(45deg, var(--light-brown) 25%, transparent 25%), linear-gradient(-45deg, transparent 25%, var(--dark-brown) 25%);
+          background-size: 33px 30px;
+          height: 30px;
+        width: 100%;
+        }
+        .layer-4 {
+          position: absolute;
+          z-index: 4;  
+          height: 385px;
+          width: 80px;
+          bottom: 0;
+          left: 0;
+          right: 180px;
+          margin: 0 auto;
+
+          animation-name: layer;
+          animation-duration: 0.9s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+        .layer-5 {
+          position: absolute;
+          z-index: 5;  
+          left: 0;
+          right: 120px;
+          margin: 0 auto;
+          width: 180px;
+          height: 310px;
+          background: var(--light-brown);
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          bottom: 0;
+          border-radius: 20px;
+        }
+        .layer-6 {
+          position: absolute;
+          z-index: 6; 
+          height: 275px; 
+          width: 80px;
+          bottom: 0;
+          left: 150px;
+          right: 0px;
+          margin: 0 auto;
+
+          animation-name: layer;
+          animation-duration: 2s;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+        }
+        .layer-7 {
+          position: absolute;
+          z-index: 7;  
+          left: 130px;
+          right: 0;
+          margin: 0 auto;
+          width: 170px;
+          height: 200px;
+          background: var(--light-brown);
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          bottom: 0;
+          border-radius: 20px;
+        }
+        .layer-8 {
+          position: absolute;  
+          z-index: 8;
+          left: 0;
+          right: 0;
+          margin: 0 auto; 
+          width: 150px;
+          height: 115px;
+          
+          bottom: 0;
+        }
+        .bush1 {
+            position: relative;
+            background: var(--light-green);
+            width: 80px;
+            height: 200px;
+            border-radius: 50px;
+            bottom: 20px;
+            left: 20px;
+          }
+          .bush2 {
+            position: relative;
+            background: var(--light-green);
+            width: 100px;
+            height: 150px;
+            border-radius: 50px;
+            bottom: 180px;
+            right: 20px;
+          }
+          .bush3 {
+            position: relative;
+            background: var(--light-green);
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            bottom: 335px;
+            left: 60px;
+          }
+        .layer-9 {
+          position: absolute;
+          z-index: 9; 
+          left: 180px;
+          right: 0;
+          margin: 0 auto;
+          width: 120px;
+          height: 110px;
+          bottom: 0;
+        }
+        .cloud1 {
+          position: relative;
+          width: 95px;
+          height: 85px;
+          right: 5px;
+          top: 35px;
+          background: white;
+          border-radius: 50px;
+        }
+        .cloud2 {
+          position: relative;
+          background: white;
+          width: 100px;
+          height: 200px;
+          border-radius: 50px;
+          bottom: 90px;
+          left: 35px;
+        }
+        .layer-10 {
+          position: absolute;
+          z-index: 10;  
+          left: 0;
+          right: 180px;
+          margin: 0 auto;
+          width: 120px;
+          height: 110px;
+          bottom: 0;
+        }
+        .cloud3 {
+          position: relative;
+          width: 95px;
+          height: 85px;
+          left: 15px;
+          top: 35px;
+          background: white;
+          border-radius: 50px;
+        }
+        .cloud4 {
+          position: relative;
+          background: white;
+          width: 100px;
+          height: 200px;
+          border-radius: 50px;
+          bottom: 90px;
+          right: 30px;
+        }
+            
+        .cheesa {
+            width: 110px;
+            height: 110px;
+        }
+
+        .score {
+          color: black;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          margin: 0;
+          text-align: center;
+        }
+        h2 {
+          top: 80px;
+          text-align: center;
+          align-items: center;
+          position: relative;
+          display: block;
+          margin-block-start: 0.83em;
+          margin-block-end: 0.83em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          font-weight: bold;
+        }
+        .score::after {
+          content: counter(score);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="phone">
+
+        <!-- Santa 1 -->
+        <div class="layer-1">
+          
+            <input type="checkbox">
+        </div>
+       
+        <!-- Santa 2 -->
+        <div class="layer-2">
+          
+            <input type="checkbox">
+        </div>
+
+        <!-- Montaña 1 -->
+        <div class="layer-3">
+            <div class="lawn"></div>
+          <div class="land"></div>
+        </div>
+
+        <!-- Santa 3 -->
+        <div class="layer-4">
+            
+            <input type="checkbox">
+        </div>
+
+        <!-- Montaña 2 -->
+        <div class="layer-5">
+            <div class="lawn"></div>
+          <div class="land"></div>
+        </div>
+
+        <!-- Santa 4 -->
+        <div class="layer-6">
+            
+            <input type="checkbox">
+        </div>
+
+        <!-- Montaña 3 -->
+        <div class="layer-7">
+            <div class="lawn"></div>
+          <div class="land"></div>
+        </div>
+
+        <!-- Arbusto -->
+        <div class="layer-8">
+            <div class="bush1"></div>
+          <div class="bush2"></div>
+          <div class="bush3"></div>
+        </div>
+
+        <!-- Nube 1 -->
+        <div class="layer-9">
+            <div class="cloud1"></div>
+            <div class="cloud2"></div>
+        </div>
+
+        <!-- Nube2 -->
+        <div class="layer-10">
+            <div class="cloud1"></div>
+            <div class="cloud2"></div>
+        </div>
+          <h2 class="score">
+            Score: 
+          </h2>
+    </div>
+</body>
+</html>
